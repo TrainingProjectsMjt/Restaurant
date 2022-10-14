@@ -10,8 +10,10 @@ namespace Restaurant.KitchenManager.API.Models
         public string Id { get; set; } = Guid.NewGuid().ToString();
         [JsonProperty("pizzaId")]
         public string PizzaId { get; set; } = Guid.NewGuid().ToString();
-        [JsonProperty("toppings")]
-        public List<Topping> Toppings { get; set; } = new List<Topping>();
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("toppingNames")]
+        public List<string> ToppingNames { get; set; }
         [JsonProperty("crust")]
         public PizzaCrust Crust { get; set; }
         [JsonProperty("diameter")]

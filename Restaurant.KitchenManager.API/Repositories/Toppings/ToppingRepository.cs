@@ -38,7 +38,7 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
                 itemRequestOptions);
         }
 
-        public async Task DeleteTopping(string id, string kind)
+        public async Task DeleteTopping(string id, string toppingId)
         {
             var itemRequestOptions = new ItemRequestOptions
             {
@@ -47,7 +47,7 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
 
             await _toppingsContainer.DeleteItemAsync<Topping>(
                 id,
-                new PartitionKey(kind),
+                new PartitionKey(toppingId),
                 itemRequestOptions);
         }
 

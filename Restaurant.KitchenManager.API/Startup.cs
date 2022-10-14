@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Restaurant.KitchenManager.API;
+using Restaurant.KitchenManager.API.Repositories.Pizzas;
 using Restaurant.KitchenManager.API.Repositories.Toppings;
 
 [assembly: FunctionsStartup(typeof(Startup))]
@@ -30,6 +31,7 @@ namespace Restaurant.KitchenManager.API
             builder.Services.AddSingleton<IConfiguration>(config);
 
             builder.Services.AddTransient<IToppingRepository, ToppingRepository>();
+            builder.Services.AddTransient<IPizzaRepository, PizzaRepository>();
 
             var connectionString = config["CosmosDBConnectionString"];
             if(string.IsNullOrEmpty(connectionString))

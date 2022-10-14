@@ -1,35 +1,59 @@
 [
-    {
-        "id": "0ae5e88d-7463-481d-a62b-a4e44819a21e",
-        "toppingId": "95f91764-aa7c-4ea8-a5e9-72b1cea4e43f",
-        "name": "Mozzarella",
-        "kind": "Cheese",
-        "_rid": "yQNUAOxMMO4FAAAAAAAAAA==",
-        "_self": "dbs/yQNUAA==/colls/yQNUAOxMMO4=/docs/yQNUAOxMMO4FAAAAAAAAAA==/",
-        "_etag": "\"00000000-0000-0000-df93-43b7042e01d8\"",
-        "_attachments": "attachments/",
-        "_ts": 1665727659
-    },
-    {
-        "id": "eac058c8-b1f8-46a4-adaa-4be516064c89",
-        "toppingId": "d61b9ea4-4822-4fd7-abda-cb2e22499f1f",
-        "name": "Pepperoni",
-        "kind": "Meat",
-        "_rid": "yQNUAOxMMO4GAAAAAAAAAA==",
-        "_self": "dbs/yQNUAA==/colls/yQNUAOxMMO4=/docs/yQNUAOxMMO4GAAAAAAAAAA==/",
-        "_etag": "\"00000000-0000-0000-df93-4855643301d8\"",
-        "_attachments": "attachments/",
-        "_ts": 1665727667
-    },
-    {
-        "id": "e9f9ea0a-a473-4f78-8f11-3aa58175bf4e",
-        "toppingId": "4466b83a-e4af-4e8e-95ae-f3f71309f4a2",
-        "name": "Tomato",
-        "kind": "Vegetable",
-        "_rid": "yQNUAOxMMO4HAAAAAAAAAA==",
-        "_self": "dbs/yQNUAA==/colls/yQNUAOxMMO4=/docs/yQNUAOxMMO4HAAAAAAAAAA==/",
-        "_etag": "\"00000000-0000-0000-df93-4d6dcc6b01d8\"",
-        "_attachments": "attachments/",
-        "_ts": 1665727675
-    }
+	{
+		"id": "345155ee-f301-47a1-b5ac-de578562197f",
+		"pizzaId": "8d5edc78-828e-4ac8-9db0-eed560a2cc9d",
+		"name": "Hawaiian",
+		"toppingNames": [
+			"Mozzarella",
+			"Ham",
+			"Pineapple"
+		],
+		"crust": 3,
+		"diameter": 10,
+		"price": 5,
+		"_rid": "yQNUAM8V0PABAAAAAAAAAA==",
+		"_self": "dbs/yQNUAA==/colls/yQNUAM8V0PA=/docs/yQNUAM8V0PABAAAAAAAAAA==/",
+		"_etag": "\"00000000-0000-0000-dfc5-5dc6b64d01d8\"",
+		"_attachments": "attachments/",
+		"_ts": 1665749178
+	},
+	{
+		"id": "5e96f665-7c9c-4d62-8cc2-ed81427476aa",
+		"pizzaId": "a70d8cd3-012f-4d93-be0d-e1ff44ac9d24",
+		"name": "Pepperoni",
+		"toppingNames": [
+			"Mozzarella",
+			"Pepperoni"
+		],
+		"crust": 1,
+		"diameter": 15,
+		"price": 7,
+		"_rid": "yQNUAM8V0PACAAAAAAAAAA==",
+		"_self": "dbs/yQNUAA==/colls/yQNUAM8V0PA=/docs/yQNUAM8V0PACAAAAAAAAAA==/",
+		"_etag": "\"00000000-0000-0000-dfc5-7239f35201d8\"",
+		"_attachments": "attachments/",
+		"_ts": 1665749212
+	},
+	{
+		"id": "a3b002fc-8294-488d-a619-ca1029e5cd93",
+		"pizzaId": "d8984af3-4b9f-4c9c-a21f-be3842c90d92",
+		"name": "Supreme",
+		"toppingNames": [
+			"Bacon",
+			"Pepperoni",
+			"Bell Pepper",
+			"Onion",
+			"Olive",
+			"Parmesan",
+			"Basil"
+		],
+		"crust": 5,
+		"diameter": 18,
+		"price": 10,
+		"_rid": "yQNUAM8V0PADAAAAAAAAAA==",
+		"_self": "dbs/yQNUAA==/colls/yQNUAM8V0PA=/docs/yQNUAM8V0PADAAAAAAAAAA==/",
+		"_etag": "\"00000000-0000-0000-dfc5-78309f9401d8\"",
+		"_attachments": "attachments/",
+		"_ts": 1665749222
+	}
 ]
