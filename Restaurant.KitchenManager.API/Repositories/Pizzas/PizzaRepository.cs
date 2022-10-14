@@ -124,5 +124,18 @@ namespace Restaurant.KitchenManager.API.Repositories.Pizzas
                 new PartitionKey(pizza.PizzaId),
                 itemRequestOptions);
         }
+
+        public async Task UpdateToppingsInPizza(Pizza pizza)
+        {
+            var itemRequestOptions = new ItemRequestOptions()
+            {
+                EnableContentResponseOnWrite = false
+            };
+
+            await _pizzaContainer.UpsertItemAsync(
+                pizza,
+                new PartitionKey(pizza.PizzaId),
+                itemRequestOptions);
+        }
     }
 }
