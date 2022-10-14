@@ -1,0 +1,35 @@
+[
+    {
+        "id": "0ae5e88d-7463-481d-a62b-a4e44819a21e",
+        "toppingId": "95f91764-aa7c-4ea8-a5e9-72b1cea4e43f",
+        "name": "Mozzarella",
+        "kind": "Cheese",
+        "_rid": "yQNUAOxMMO4FAAAAAAAAAA==",
+        "_self": "dbs/yQNUAA==/colls/yQNUAOxMMO4=/docs/yQNUAOxMMO4FAAAAAAAAAA==/",
+        "_etag": "\"00000000-0000-0000-df93-43b7042e01d8\"",
+        "_attachments": "attachments/",
+        "_ts": 1665727659
+    },
+    {
+        "id": "eac058c8-b1f8-46a4-adaa-4be516064c89",
+        "toppingId": "d61b9ea4-4822-4fd7-abda-cb2e22499f1f",
+        "name": "Pepperoni",
+        "kind": "Meat",
+        "_rid": "yQNUAOxMMO4GAAAAAAAAAA==",
+        "_self": "dbs/yQNUAA==/colls/yQNUAOxMMO4=/docs/yQNUAOxMMO4GAAAAAAAAAA==/",
+        "_etag": "\"00000000-0000-0000-df93-4855643301d8\"",
+        "_attachments": "attachments/",
+        "_ts": 1665727667
+    },
+    {
+        "id": "e9f9ea0a-a473-4f78-8f11-3aa58175bf4e",
+        "toppingId": "4466b83a-e4af-4e8e-95ae-f3f71309f4a2",
+        "name": "Tomato",
+        "kind": "Vegetable",
+        "_rid": "yQNUAOxMMO4HAAAAAAAAAA==",
+        "_self": "dbs/yQNUAA==/colls/yQNUAOxMMO4=/docs/yQNUAOxMMO4HAAAAAAAAAA==/",
+        "_etag": "\"00000000-0000-0000-df93-4d6dcc6b01d8\"",
+        "_attachments": "attachments/",
+        "_ts": 1665727675
+    }
+]
