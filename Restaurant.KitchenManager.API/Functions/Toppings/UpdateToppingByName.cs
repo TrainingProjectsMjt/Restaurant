@@ -18,14 +18,14 @@ using Restaurant.KitchenManager.API.Models;
 
 namespace Restaurant.KitchenManager.API.Functions.Toppings
 {
-    public class UpdateToppingById
+    public class UpdateToppingByName
     {
-        private readonly ILogger<UpdateToppingById> _logger;
+        private readonly ILogger<UpdateToppingByName> _logger;
         private readonly IConfiguration _config;
         private readonly IToppingRepository _toppingRepository;
 
-        public UpdateToppingById(
-            ILogger<UpdateToppingById> logger,
+        public UpdateToppingByName(
+            ILogger<UpdateToppingByName> logger,
             IConfiguration config,
             IToppingRepository toppingRepository)
         {
@@ -34,7 +34,7 @@ namespace Restaurant.KitchenManager.API.Functions.Toppings
             _toppingRepository = toppingRepository;
         }
 
-        [FunctionName(nameof(UpdateToppingById))]
+        [FunctionName(nameof(UpdateToppingByName))]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "put", Route = "topping/{name}")] HttpRequest req,
             string name)

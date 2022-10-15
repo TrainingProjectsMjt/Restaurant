@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Restaurant.KitchenManager.API\Restaurant.KitchenManager.API.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="RepositoryTests\Pizzas\" />
-  </ItemGroup>
-
 </Project>

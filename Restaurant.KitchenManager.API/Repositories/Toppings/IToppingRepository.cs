@@ -11,6 +11,7 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
         /// <summary>
         /// Create a topping.
         /// </summary>
+        /// <param name="topping"></param>
         /// <returns></returns>
         Task CreateTopping(Topping topping);
 
@@ -18,9 +19,9 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
         /// Delete a topping.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="kind"></param>
+        /// <param name="toppingId"></param>
         /// <returns></returns>
-        Task DeleteTopping(string id, string kind);
+        Task DeleteTopping(string id, string toppingId);
 
         /// <summary>
         /// Retrieves all toppings.
@@ -46,7 +47,6 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
         /// Update a topping.
         /// </summary>
         /// <param name="topping"></param>
-        /// <param name="oldKind"></param>
         /// <returns></returns>
         Task UpdateTopping(Topping topping);
     }

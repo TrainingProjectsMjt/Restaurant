@@ -50,7 +50,7 @@ namespace Restaurant.KitchenManager.API.Functions.Toppings
             }
             catch(CosmosException cex) when(cex.StatusCode == HttpStatusCode.NotFound)
             {
-                _logger.LogError($"Could not find Topping Id: {name}");
+                _logger.LogError($"Could not find Topping Name: {name}");
                 result = new NotFoundResult();
             }
             catch(Exception ex)

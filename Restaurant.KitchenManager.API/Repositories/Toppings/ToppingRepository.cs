@@ -38,7 +38,7 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
                 itemRequestOptions);
         }
 
-        public async Task DeleteTopping(string id, string kind)
+        public async Task DeleteTopping(string id, string toppingId)
         {
             var itemRequestOptions = new ItemRequestOptions
             {
@@ -47,7 +47,7 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
 
             await _toppingsContainer.DeleteItemAsync<Topping>(
                 id,
-                new PartitionKey(kind),
+                new PartitionKey(toppingId),
                 itemRequestOptions);
         }
 
@@ -59,8 +59,8 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
 
             while (itemsFeedIterator.HasMoreResults)
             {
-                var orderResponse = await itemsFeedIterator.ReadNextAsync();
-                toppings.AddRange(orderResponse.Resource);
+                var response = await itemsFeedIterator.ReadNextAsync();
+                toppings.AddRange(response.Resource);
             }
 
             return toppings;
@@ -76,8 +76,8 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
 
             while(itemsFeedIterator.HasMoreResults)
             {
-                var orderResponse = await itemsFeedIterator.ReadNextAsync();
-                toppings.AddRange(orderResponse.Resource);
+                var response = await itemsFeedIterator.ReadNextAsync();
+                toppings.AddRange(response.Resource);
             }
             if(toppings.Any())
             {
@@ -99,8 +99,8 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
 
             while(itemsFeedIterator.HasMoreResults)
             {
-                var orderResponse = await itemsFeedIterator.ReadNextAsync();
-                toppings.AddRange(orderResponse.Resource);
+                var response = await itemsFeedIterator.ReadNextAsync();
+                toppings.AddRange(response.Resource);
             }
             if(toppings.Any())
             {
