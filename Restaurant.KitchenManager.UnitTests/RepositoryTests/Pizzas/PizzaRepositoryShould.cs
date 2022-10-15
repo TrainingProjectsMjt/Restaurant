@@ -16,7 +16,7 @@ namespace Restaurant.KitchenManager.UnitTests.RepositoryTests.Pizzas
 {
     public class PizzaRepositoryShould
     {
-        private Mock<Container> _itemContainerMock;
+        private Mock<Container> _containerMock;
         private Mock<CosmosClient> _cosmosClientMock;
         private Mock<IConfiguration> _configMock;
 
@@ -24,13 +24,10 @@ namespace Restaurant.KitchenManager.UnitTests.RepositoryTests.Pizzas
 
         public PizzaRepositoryShould()
         {
-            _itemContainerMock = new Mock<Container>();
+            _containerMock = new Mock<Container>();
             _cosmosClientMock = new Mock<CosmosClient>();
-            _cosmosClientMock.Setup(x => x.GetContainer(It.IsAny<string>(), It.IsAny<string>())).Returns(_itemContainerMock.Object);
+            _cosmosClientMock.Setup(x => x.GetContainer(It.IsAny<string>(), It.IsAny<string>())).Returns(_containerMock.Object);
             _configMock = new Mock<IConfiguration>();
-            //_configMock.Setup(x => x["CosmosDBConnectionString"]).Returns("CosmosDBConnectionString");
-            //_configMock.Setup(x => x["DatabaseName"]).Returns("DatabaseName");
-            //_configMock.Setup(x => x["PizzasContainerName"]).Returns("PizzasContainerName");
 
             _sut = new PizzaRepository(
                 _cosmosClientMock.Object,
@@ -43,13 +40,13 @@ namespace Restaurant.KitchenManager.UnitTests.RepositoryTests.Pizzas
             // Arrange
             var testPizza = TestDataGenerator.GenerateHawaiianPizza();
 
-            _itemContainerMock.SetupCreateItemAsync<Pizza>();
+            _containerMock.SetupCreateItemAsync<Pizza>();
 
             // Act
             await _sut.CreatePizza(testPizza);
 
             // Assert
-            _itemContainerMock.Verify(o => o.CreateItemAsync(
+            _containerMock.Verify(o => o.CreateItemAsync(
                 It.IsAny<Pizza>(),
                 It.IsAny<PartitionKey>(),
                 It.IsAny<ItemRequestOptions>(),
@@ -58,18 +55,18 @@ namespace Restaurant.KitchenManager.UnitTests.RepositoryTests.Pizzas
         }
 
         [Fact]
-        public async Task FireDeleteItemAsync()
+        public async Task FireDeletePizzaAsync()
         {
             // Arrange
             var testPizza = TestDataGenerator.GenerateHawaiianPizza();
 
-            _itemContainerMock.SetupDeleteItemAsync<Pizza>();
+            _containerMock.SetupDeleteItemAsync<Pizza>();
 
             // Act
             await _sut.DeletePizza(testPizza.Id, testPizza.PizzaId);
 
             // Assert
-            _itemContainerMock.Verify(c => c.DeleteItemAsync<Pizza>(
+            _containerMock.Verify(c => c.DeleteItemAsync<Pizza>(
                 It.IsAny<string>(),
                 It.IsAny<PartitionKey>(),
                 It.IsAny<ItemRequestOptions>(),
@@ -83,13 +80,13 @@ namespace Restaurant.KitchenManager.UnitTests.RepositoryTests.Pizzas
             // Arrange
             var testPizzas = TestDataGenerator.GenerateAllPizzas();
 
-            _itemContainerMock.SetupItemQueryIteratorMock(testPizzas);
+            _containerMock.SetupItemQueryIteratorMock(testPizzas);
 
             // Act
             var response = await _sut.GetAllPizzas();
 
             // Assert
-            _itemContainerMock.Verify(c => c.GetItemQueryIterator<Pizza>(
+            _containerMock.Verify(c => c.GetItemQueryIterator<Pizza>(
                 It.IsAny<string>(),
                 It.IsAny<string>(),
                 It.IsAny<QueryRequestOptions>()),
@@ -104,13 +101,13 @@ namespace Restaurant.KitchenManager.UnitTests.RepositoryTests.Pizzas
             // Arrange
             var testPizza = TestDataGenerator.GenerateHawaiianPizza();
 
-            _itemContainerMock.SetupItemQueryIteratorMock(new List<Pizza> { testPizza });
+            _containerMock.SetupItemQueryIteratorMock(new List<Pizza> { testPizza });
 
             // Act
             var response = await _sut.GetPizzaById(testPizza.Id);
 
             // Assert
-            _itemContainerMock.Verify(c => c.GetItemQueryIterator<Pizza>(
+            _containerMock.Verify(c => c.GetItemQueryIterator<Pizza>(
                 It.IsAny<QueryDefinition>(),
                 It.IsAny<string>(),
                 It.IsAny<QueryRequestOptions>()),
@@ -125,13 +122,13 @@ namespace Restaurant.KitchenManager.UnitTests.RepositoryTests.Pizzas
             // Arrange
             var testPizza = TestDataGenerator.GenerateHawaiianPizza();
 
-            _itemContainerMock.SetupItemQueryIteratorMock(new List<Pizza> { testPizza });
+            _containerMock.SetupItemQueryIteratorMock(new List<Pizza> { testPizza });
 
             // Act
             var response = await _sut.GetPizzaByName(testPizza.Name);
 
             // Assert
-            _itemContainerMock.Verify(c => c.GetItemQueryIterator<Pizza>(
+            _containerMock.Verify(c => c.GetItemQueryIterator<Pizza>(
                 It.IsAny<QueryDefinition>(),
                 It.IsAny<string>(),
                 It.IsAny<QueryRequestOptions>()), Times.Once);
@@ -145,13 +142,13 @@ namespace Restaurant.KitchenManager.UnitTests.RepositoryTests.Pizzas
             // Arrange
             var testPizza = TestDataGenerator.GenerateHawaiianPizza();
 
-            _itemContainerMock.SetupUpsertItemAsync<Pizza>();
+            _containerMock.SetupUpsertItemAsync<Pizza>();
 
             // Act
             await _sut.UpdatePizza(testPizza);
 
             // Assert
-            _itemContainerMock.Verify(c => c.UpsertItemAsync(
+            _containerMock.Verify(c => c.UpsertItemAsync(
                 It.IsAny<Pizza>(),
                 It.IsAny<PartitionKey>(),
                 It.IsAny<ItemRequestOptions>(),
