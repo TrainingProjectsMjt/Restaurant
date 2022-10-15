@@ -40,7 +40,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         }
 
         [Fact]
-        public async Task Return200OnOk()
+        public async Task Return200OnOkAsync()
         {
             // Arrange
             var allPizzas = TestDataGenerator.GenerateAllPizzas();
@@ -64,7 +64,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         }
 
         [Fact]
-        public async Task Throw500OnInternalServerError()
+        public async Task Throw500OnInternalServerErrorAsync()
         {
             // Arrange
             var allPizzas = TestDataGenerator.GenerateAllPizzas();

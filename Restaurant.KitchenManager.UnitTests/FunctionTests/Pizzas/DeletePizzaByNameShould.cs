@@ -42,7 +42,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         }
 
         [Fact]
-        public async Task Return202OnAccepted()
+        public async Task Return202OnAcceptedAsync()
         {
             // Arrange
             var pizza = TestDataGenerator.GenerateHawaiianPizza();
@@ -69,7 +69,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         }
 
         [Fact]
-        public async Task Throw400OnBadRequest()
+        public async Task Throw400OnBadRequestAsync()
         {
             // Arrange
             var pizzaName = "";
@@ -84,7 +84,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         }
 
         [Fact]
-        public async Task Throw404OnNotFound()
+        public async Task Throw404OnNotFoundAsync()
         {
             // Arrange
             var pizza = TestDataGenerator.GenerateHawaiianPizza();
@@ -108,7 +108,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         }
 
         [Fact]
-        public async Task Throw500OnInternalServerError()
+        public async Task Throw500OnInternalServerErrorAsync()
         {
             // Arrange
             var pizza = TestDataGenerator.GenerateHawaiianPizza();

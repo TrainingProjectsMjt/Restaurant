@@ -53,7 +53,7 @@ namespace Restaurant.KitchenManager.API.Functions.Pizzas
                 var oldPizza = await _pizzaRepository.GetPizzaByName(pizzaName);
                 oldPizza.ToppingNames = newPizza.ToppingNames;
 
-                await _pizzaRepository.UpdatePizzaToppings(oldPizza);
+                await _pizzaRepository.UpdatePizza(oldPizza);
 
                 result = new OkObjectResult(oldPizza);
             }

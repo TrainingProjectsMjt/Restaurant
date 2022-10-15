@@ -51,7 +51,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Toppings
 
             _toppingRepository
                 .Setup(s => s.GetToppingByName(It.IsAny<string>()))
-                .ReturnsAsync(() => default(Topping));
+                .ReturnsAsync(() => null);
             _toppingRepository
                 .Setup(s => s.CreateTopping(It.IsAny<Topping>()))
                 .Returns(Task.CompletedTask);

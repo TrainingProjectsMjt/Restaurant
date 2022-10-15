@@ -40,7 +40,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         }
 
         [Fact]
-        public async Task Return201OnCreated()
+        public async Task Return201OnCreatedAsync()
         {
             // Arrange
             var pizza = TestDataGenerator.GenerateHawaiianPizza();
@@ -52,7 +52,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
 
             _pizzaRepositoryMock
                 .Setup(s => s.GetPizzaByName(It.IsAny<string>()))
-                .ReturnsAsync(() => default(Pizza));
+                .ReturnsAsync(() => null);
             _pizzaRepositoryMock
                 .Setup(s => s.CreatePizza(It.IsAny<Pizza>()))
                 .Returns(Task.CompletedTask);
@@ -67,7 +67,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         }
 
         [Fact]
-        public async Task Throw409OnConflict()
+        public async Task Throw409OnConflictAsync()
         {
             // Arrange
             var pizza = TestDataGenerator.GenerateHawaiianPizza();
@@ -94,7 +94,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         }
 
         [Fact]
-        public async Task Throw500OnInternalServerError()
+        public async Task Throw500OnInternalServerErrorAsync()
         {
             // Arrange
             var pizza = TestDataGenerator.GenerateHawaiianPizza();

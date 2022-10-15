@@ -45,7 +45,7 @@ namespace Restaurant.KitchenManager.API.Repositories.Pizzas
                 EnableContentResponseOnWrite = false
             };
 
-            await _pizzaContainer.DeleteItemAsync<Topping>(
+            await _pizzaContainer.DeleteItemAsync<Pizza>(
                 id,
                 new PartitionKey(pizzaId),
                 itemRequestOptions);
@@ -53,22 +53,22 @@ namespace Restaurant.KitchenManager.API.Repositories.Pizzas
 
         public async Task<List<Pizza>> GetAllPizzas()
         {
-            var toppings = new List<Pizza>();
+            var pizzas = new List<Pizza>();
 
             var itemsFeedIterator = _pizzaContainer.GetItemQueryIterator<Pizza>();
 
             while(itemsFeedIterator.HasMoreResults)
             {
                 var response = await itemsFeedIterator.ReadNextAsync();
-                toppings.AddRange(response.Resource);
+                pizzas.AddRange(response.Resource);
             }
 
-            return toppings;
+            return pizzas;
         }
 
         public async Task<Pizza> GetPizzaById(string id)
         {
-            var toppings = new List<Pizza>();
+            var pizzas = new List<Pizza>();
 
             var query = new QueryDefinition("SELECT * FROM Pizzas i WHERE i.id = @id")
                     .WithParameter("@id", id);
@@ -77,11 +77,11 @@ namespace Restaurant.KitchenManager.API.Repositories.Pizzas
             while(itemsFeedIterator.HasMoreResults)
             {
                 var response = await itemsFeedIterator.ReadNextAsync();
-                toppings.AddRange(response.Resource);
+                pizzas.AddRange(response.Resource);
             }
-            if(toppings.Any())
+            if(pizzas.Any())
             {
-                return toppings.First();
+                return pizzas.First();
             }
             else
             {
@@ -91,7 +91,7 @@ namespace Restaurant.KitchenManager.API.Repositories.Pizzas
 
         public async Task<Pizza> GetPizzaByName(string name)
         {
-            var toppings = new List<Pizza>();
+            var pizzas = new List<Pizza>();
 
             var query = new QueryDefinition("SELECT * FROM Pizzas i WHERE i.name = @name")
                     .WithParameter("@name", name);
@@ -100,11 +100,11 @@ namespace Restaurant.KitchenManager.API.Repositories.Pizzas
             while(itemsFeedIterator.HasMoreResults)
             {
                 var response = await itemsFeedIterator.ReadNextAsync();
-                toppings.AddRange(response.Resource);
+                pizzas.AddRange(response.Resource);
             }
-            if(toppings.Any())
+            if(pizzas.Any())
             {
-                return toppings.First();
+                return pizzas.First();
             }
             else
             {
@@ -113,19 +113,6 @@ namespace Restaurant.KitchenManager.API.Repositories.Pizzas
         }
 
         public async Task UpdatePizza(Pizza pizza)
-        {
-            var itemRequestOptions = new ItemRequestOptions()
-            {
-                EnableContentResponseOnWrite = false
-            };
-
-            await _pizzaContainer.UpsertItemAsync(
-                pizza,
-                new PartitionKey(pizza.PizzaId),
-                itemRequestOptions);
-        }
-
-        public async Task UpdatePizzaToppings(Pizza pizza)
         {
             var itemRequestOptions = new ItemRequestOptions()
             {
