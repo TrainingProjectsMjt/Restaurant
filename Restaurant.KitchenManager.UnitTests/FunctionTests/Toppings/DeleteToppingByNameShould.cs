@@ -52,7 +52,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Toppings
 
             _toppingRepositoryMock
                 .Setup(s => s.GetToppingByName(It.IsAny<string>()))
-                .Returns(async () => await Task.Run(() => topping));
+                .ReturnsAsync(() => topping);
             _toppingRepositoryMock
                 .Setup(s => s.DeleteTopping(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(Task.CompletedTask);

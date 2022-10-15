@@ -54,7 +54,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
 
             _pizzaRepositoryMock
                 .Setup(s => s.GetPizzaByName(It.IsAny<string>()))
-                .Returns(async () => await Task.Run(() => pizza));
+                .ReturnsAsync(() => pizza);
             _pizzaRepositoryMock
                 .Setup(s => s.DeletePizza(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(Task.CompletedTask);

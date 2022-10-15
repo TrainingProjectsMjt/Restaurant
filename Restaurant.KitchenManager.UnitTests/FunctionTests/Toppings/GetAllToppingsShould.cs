@@ -53,7 +53,7 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Toppings
 
             _toppingRepositoryMock
                 .Setup(s => s.GetAllToppings())
-                .Returns(async () => await Task.Run(() => allToppings));
+                .ReturnsAsync(() => allToppings);
 
             // Act
             var response = await _func.Run(_httpRequestMock.Object);
