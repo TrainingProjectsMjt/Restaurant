@@ -15,14 +15,14 @@ using Restaurant.KitchenManager.API.Repositories.Pizzas;
 
 namespace Restaurant.KitchenManager.API.Functions.Pizzas
 {
-    public class UpdateToppingsInPizzaByPizzaName
+    public class UpdatePizzaToppingsByPizzaName
     {
-        private readonly ILogger<UpdateToppingsInPizzaByPizzaName> _logger;
+        private readonly ILogger<UpdatePizzaToppingsByPizzaName> _logger;
         private readonly IConfiguration _config;
         private readonly IPizzaRepository _pizzaRepository;
 
-        public UpdateToppingsInPizzaByPizzaName(
-            ILogger<UpdateToppingsInPizzaByPizzaName> logger,
+        public UpdatePizzaToppingsByPizzaName(
+            ILogger<UpdatePizzaToppingsByPizzaName> logger,
             IConfiguration config,
             IPizzaRepository pizzaRepository)
         {
@@ -31,7 +31,7 @@ namespace Restaurant.KitchenManager.API.Functions.Pizzas
             _pizzaRepository = pizzaRepository;
         }
 
-        [FunctionName(nameof(UpdateToppingsInPizzaByPizzaName))]
+        [FunctionName(nameof(UpdatePizzaToppingsByPizzaName))]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "put", Route = "pizzatoppings/{pizzaName}")] HttpRequest req,
             string pizzaName)
@@ -53,7 +53,7 @@ namespace Restaurant.KitchenManager.API.Functions.Pizzas
                 var oldPizza = await _pizzaRepository.GetPizzaByName(pizzaName);
                 oldPizza.ToppingNames = newPizza.ToppingNames;
 
-                await _pizzaRepository.UpdateToppingsInPizza(oldPizza);
+                await _pizzaRepository.UpdatePizzaToppings(oldPizza);
 
                 result = new OkObjectResult(oldPizza);
             }

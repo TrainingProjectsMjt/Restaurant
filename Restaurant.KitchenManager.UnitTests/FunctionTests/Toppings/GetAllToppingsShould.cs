@@ -1,58 +1,59 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Newtonsoft.Json;
-using Restaurant.KitchenManager.UnitTests.Helpers;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-using Restaurant.KitchenManager.API.Functions.Pizzas;
-using Microsoft.Extensions.Configuration;
-using Restaurant.KitchenManager.API.Repositories.Pizzas;
+using Restaurant.KitchenManager.API.Functions.Toppings;
 using Restaurant.KitchenManager.API.Models;
-using System.Collections.Generic;
+using Restaurant.KitchenManager.API.Repositories.Toppings;
+using Restaurant.KitchenManager.UnitTests.Helpers;
+using Xunit;
 
-namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
+namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Toppings
 {
-    public class GetAllPizzasShould
+    public class GetAllToppingsShould
     {
-        private Mock<ILogger<GetAllPizzas>> _loggerMock;
+        private Mock<ILogger<GetAllToppings>> _loggerMock;
         private Mock<IConfiguration> _configMock;
-        private Mock<IPizzaRepository> _pizzaRepositoryMock;
+        private Mock<IToppingRepository> _toppingRepositoryMock;
         private Mock<HttpRequest> _httpRequestMock;
 
-        private GetAllPizzas _func;
+        private GetAllToppings _func;
 
-        public GetAllPizzasShould()
+        public GetAllToppingsShould()
         {
-            _loggerMock = new Mock<ILogger<GetAllPizzas>>();
+            _loggerMock = new Mock<ILogger<GetAllToppings>>();
             _configMock = new Mock<IConfiguration>();
-            _pizzaRepositoryMock = new Mock<IPizzaRepository>();
+            _toppingRepositoryMock = new Mock<IToppingRepository>();
             _httpRequestMock = new Mock<HttpRequest>();
 
-            _func = new GetAllPizzas(
+            _func = new GetAllToppings(
                 _loggerMock.Object,
                 _configMock.Object,
-                _pizzaRepositoryMock.Object);
+                _toppingRepositoryMock.Object);
         }
 
         [Fact]
         public async Task Return200OnOk()
         {
             // Arrange
-            var allPizzas = TestDataGenerator.GenerateAllPizzas();
-            var byteArray = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(allPizzas));
+            var allToppings = TestDataGenerator.GenerateAllToppings();
+            var byteArray = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(allToppings));
             var memoryStream = new MemoryStream(byteArray);
             _httpRequestMock
                 .Setup(r => r.Body)
                 .Returns(memoryStream);
 
-            _pizzaRepositoryMock
-                .Setup(s => s.GetAllPizzas())
-                .Returns(async () => await Task.Run(() => allPizzas));
+            _toppingRepositoryMock
+                .Setup(s => s.GetAllToppings())
+                .Returns(async () => await Task.Run(() => allToppings));
 
             // Act
             var response = await _func.Run(_httpRequestMock.Object);
@@ -67,15 +68,15 @@ namespace Restaurant.KitchenManager.UnitTests.FunctionTests.Pizzas
         public async Task Throw500OnInternalServerError()
         {
             // Arrange
-            var allPizzas = TestDataGenerator.GenerateAllPizzas();
-            var byteArray = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(allPizzas));
+            var topping = TestDataGenerator.GenerateAllToppings();
+            var byteArray = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(topping));
             var memoryStream = new MemoryStream(byteArray);
             _httpRequestMock
                 .Setup(r => r.Body)
                 .Returns(memoryStream);
 
-            _pizzaRepositoryMock
-                .Setup(s => s.GetAllPizzas())
+            _toppingRepositoryMock
+                .Setup(s => s.GetAllToppings())
                 .Throws(new Exception("Some error!"));
 
             // Act

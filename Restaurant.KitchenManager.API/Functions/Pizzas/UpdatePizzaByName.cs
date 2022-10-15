@@ -20,14 +20,14 @@ using Restaurant.KitchenManager.API.Repositories.Pizzas;
 
 namespace Restaurant.KitchenManager.API.Functions.Pizzas
 {
-    public class UpdatePizzaByName
+    public class UpdateToppingsInPizzaByPizzaName
     {
-        private readonly ILogger<UpdatePizzaByName> _logger;
+        private readonly ILogger<UpdateToppingsInPizzaByPizzaName> _logger;
         private readonly IConfiguration _config;
         private readonly IPizzaRepository _pizzaRepository;
 
-        public UpdatePizzaByName(
-            ILogger<UpdatePizzaByName> logger,
+        public UpdateToppingsInPizzaByPizzaName(
+            ILogger<UpdateToppingsInPizzaByPizzaName> logger,
             IConfiguration config,
             IPizzaRepository pizzaRepository)
         {
@@ -36,7 +36,7 @@ namespace Restaurant.KitchenManager.API.Functions.Pizzas
             _pizzaRepository = pizzaRepository;
         }
 
-        [FunctionName(nameof(UpdatePizzaByName))]
+        [FunctionName(nameof(UpdateToppingsInPizzaByPizzaName))]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "put", Route = "pizza/{name}")] HttpRequest req,
             string name)

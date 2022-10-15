@@ -55,6 +55,6 @@ namespace Restaurant.KitchenManager.API.Repositories.Pizzas
         /// </summary>
         /// <param name="pizza"></param>
         /// <returns></returns>
-        Task UpdateToppingsInPizza(Pizza pizza);
+        Task UpdatePizzaToppings(Pizza pizza);
     }
 }

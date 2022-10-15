@@ -59,8 +59,8 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
 
             while (itemsFeedIterator.HasMoreResults)
             {
-                var orderResponse = await itemsFeedIterator.ReadNextAsync();
-                toppings.AddRange(orderResponse.Resource);
+                var response = await itemsFeedIterator.ReadNextAsync();
+                toppings.AddRange(response.Resource);
             }
 
             return toppings;
@@ -76,8 +76,8 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
 
             while(itemsFeedIterator.HasMoreResults)
             {
-                var orderResponse = await itemsFeedIterator.ReadNextAsync();
-                toppings.AddRange(orderResponse.Resource);
+                var response = await itemsFeedIterator.ReadNextAsync();
+                toppings.AddRange(response.Resource);
             }
             if(toppings.Any())
             {
@@ -99,8 +99,8 @@ namespace Restaurant.KitchenManager.API.Repositories.Toppings
 
             while(itemsFeedIterator.HasMoreResults)
             {
-                var orderResponse = await itemsFeedIterator.ReadNextAsync();
-                toppings.AddRange(orderResponse.Resource);
+                var response = await itemsFeedIterator.ReadNextAsync();
+                toppings.AddRange(response.Resource);
             }
             if(toppings.Any())
             {
